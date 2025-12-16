@@ -19,16 +19,19 @@ export default function ContactForm() {
     };
 
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
+    const res = await fetch("/api/contact", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+    });
 
-      if (!res.ok) throw new Error("Bad response");
+    const data = await res.json().catch(() => null);
 
-      setStatus("ok");
-      e.currentTarget.reset();
+    if (!res.ok || !data?.ok) throw new Error("Send failed");
+
+    setStatus("ok");
+    e.currentTarget.reset();
+
     } catch {
       setStatus("error");
     } finally {

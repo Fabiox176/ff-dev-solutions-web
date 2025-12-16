@@ -5,30 +5,35 @@ export async function POST(req: Request) {
     const { name, email, message } = await req.json();
 
     if (!name || !email || !message) {
-      return new Response(JSON.stringify({ error: "Faltan campos" }), { status: 400 });
+      return Response.json({ ok: false, error: "Faltan campos" }, { status: 400 });
     }
 
-    const resend = new Resend(process.env.RESEND_API_KEY);
-
+    const apiKey = process.env.RESEND_API_KEY;
     const to = process.env.CONTACT_TO_EMAIL;
+
+    if (!apiKey) {
+      return Response.json({ ok: false, error: "RESEND_API_KEY no configurado" }, { status: 500 });
+    }
     if (!to) {
-      return new Response(JSON.stringify({ error: "CONTACT_TO_EMAIL no configurado" }), {
-        status: 500,
-      });
+      return Response.json({ ok: false, error: "CONTACT_TO_EMAIL no configurado" }, { status: 500 });
     }
 
-    const subject = `Contacto F&F: ${name}`;
+    const resend = new Resend(apiKey);
 
-    await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: "F&F Dev Solutions <onboarding@resend.dev>",
       to,
+      subject: `Contacto F&F: ${name}`,
       replyTo: email,
-      subject,
       text: `Nombre: ${name}\nEmail: ${email}\n\nMensaje:\n${message}`,
     });
 
-    return Response.json({ ok: true });
-  } catch (err) {
-    return new Response(JSON.stringify({ error: "Error enviando email" }), { status: 500 });
+    if (error) {
+      return Response.json({ ok: false, error: error.message }, { status: 500 });
+    }
+
+    return Response.json({ ok: true, id: data?.id });
+  } catch (e) {
+    return Response.json({ ok: false, error: "Error procesando el envío" }, { status: 500 });
   }
 }
