@@ -89,8 +89,8 @@ export default function Home() {
 
           <div className="mt-6 rounded-xl border border-white/10 p-5">
             <p className="text-sm text-white/70">
-              📩 Email: <span className="text-white">tuemail@dominio.com</span><br />
-              📱 WhatsApp: <span className="text-white">+54 9 ...</span>
+              📩 Email: <span className="text-white">ffsolutions@gmail.com</span><br />
+              📱 WhatsApp: <span className="text-white">+54 9 3804443293</span>
             </p>
           </div>
         </div>
