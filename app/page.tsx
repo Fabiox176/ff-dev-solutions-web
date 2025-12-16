@@ -8,7 +8,7 @@ export default function Home() {
 
           <h1 className="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">
             Desarrollo web y automatización
-            <span className="text-white/70"> para negocios reales</span>
+            <span className="text-white/70"> para negocios e industrias</span>
           </h1>
 
           <p className="mt-4 max-w-2xl text-white/70">
