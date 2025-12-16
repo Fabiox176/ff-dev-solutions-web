@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
+import Link from "next/link"; // Agregué esto porque usas Link o anchor tags, aunque en tu código original usabas <a> para el mail y para home. Para home es mejor Link.
 import ContactForm from "@/components/ContactForm";
+
+export const metadata: Metadata = {
+  title: "Contacto",
+  description: "Contactá a F&F Dev Solutions para presupuestos y consultas.",
+};
 
 export default function ContactoPage() {
   return (
@@ -21,19 +28,20 @@ export default function ContactoPage() {
           </p>
 
           <div className="mt-6 grid gap-3">
+            {/* OJO: Actualizá este email antes de subir a producción */}
             <a
               className="rounded-lg border border-white/20 px-4 py-2 text-sm font-semibold text-white/90 hover:border-white/40"
-              href="mailto:tuemail@dominio.com?subject=Consulta%20F%26F%20Dev%20Solutions"
+              href="mailto:ffsolutions@gmail.com?subject=Consulta%20F%26F%20Dev%20Solutions"
             >
               Escribir por email
             </a>
 
-            <a
-              className="rounded-lg border border-white/20 px-4 py-2 text-sm font-semibold text-white/90 hover:border-white/40"
+            <Link
+              className="rounded-lg border border-white/20 px-4 py-2 text-sm font-semibold text-white/90 hover:border-white/40 inline-block text-center"
               href="/"
             >
               Volver a la home
-            </a>
+            </Link>
           </div>
         </div>
       </div>
