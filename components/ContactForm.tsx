@@ -19,33 +19,18 @@ export default function ContactForm() {
     };
 
     try {
-      // INICIO de la sección modificada con lectura de texto y parseo condicional
       const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+    });
 
-      const text = await res.text();
-      let data: any = null;
+    if (!res.ok) throw new Error("Bad response");
 
-      if (text) {
-        try {
-          data = JSON.parse(text);
-        } catch {
-          // si no es JSON, no pasa nada
-        }
-      }
+    // éxito
+    setStatus("ok");
+    e.currentTarget.reset();
 
-      // Si el status no es OK (4xx, 5xx) => error
-      if (!res.ok) throw new Error("Bad response");
-
-      // Si vino JSON y explícitamente dice ok:false => error
-      if (data && data.ok === false) throw new Error("Server reported failure");
-
-      setStatus("ok");
-      e.currentTarget.reset();
-      // FIN de la sección modificada
 
     } catch {
       setStatus("error");
