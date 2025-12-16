@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import Link from "next/link";
+import Nav from "@/components/Nav";
 
 
 const inter = Inter({
@@ -22,18 +23,15 @@ export default function RootLayout({
     <html lang="es">
       <body className={`${inter.className} min-h-screen bg-black text-white`}>
         <header className="border-b border-white/10">
-          <div className="mx-auto flex max-w-6xl items-center justify-between p-6">
-            <Link href="/" className="font-semibold hover:opacity-90">
-              F&F Dev Solutions
-              </Link>
-            <nav className="flex gap-6 text-sm text-white/70">
-              <a className="hover:text-white" href="#servicios">Servicios</a>
-              <a className="hover:text-white" href="#proyectos">Proyectos</a>
-              <a className="hover:text-white" href="#proceso">Proceso</a>
-              <a className="hover:text-white" href="/contacto">Contacto</a>
-            </nav>
-          </div>
-        </header>
+  <div className="mx-auto flex max-w-6xl items-center justify-between p-6">
+    <Link href="/" className="font-semibold hover:opacity-90">
+      F&F Dev Solutions
+    </Link>
+
+      <Nav />
+    </div>
+  </header>
+
 
         {children}
 
