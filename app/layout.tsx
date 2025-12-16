@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Inter } from "next/font/google";
+import Link from "next/link";
+
 
 const inter = Inter({
   subsets: ["latin"],
@@ -21,7 +23,9 @@ export default function RootLayout({
       <body className={`${inter.className} min-h-screen bg-black text-white`}>
         <header className="border-b border-white/10">
           <div className="mx-auto flex max-w-6xl items-center justify-between p-6">
-            <span className="font-semibold">F&F Dev Solutions</span>
+            <Link href="/" className="font-semibold hover:opacity-90">
+              F&F Dev Solutions
+              </Link>
             <nav className="flex gap-6 text-sm text-white/70">
               <a className="hover:text-white" href="#servicios">Servicios</a>
               <a className="hover:text-white" href="#proyectos">Proyectos</a>
