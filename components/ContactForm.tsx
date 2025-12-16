@@ -16,22 +16,21 @@ export default function ContactForm() {
       name: String(form.get("name") || ""),
       email: String(form.get("email") || ""),
       message: String(form.get("message") || ""),
+      company: String(form.get("company") || ""), // honeypot agregado
     };
 
     try {
       const res = await fetch("/api/contact", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
-    });
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
 
-    if (!res.ok) throw new Error("Bad response");
+      if (!res.ok) throw new Error("Bad response");
 
-    // éxito
-    setStatus("ok");
-    e.currentTarget.reset();
-
-
+      // éxito
+      setStatus("ok");
+      e.currentTarget.reset();
     } catch {
       setStatus("error");
     } finally {
@@ -41,6 +40,14 @@ export default function ContactForm() {
 
   return (
     <form className="rounded-xl border border-white/10 p-5" onSubmit={onSubmit}>
+      {/* Honeypot (bots lo completan, humanos no) */}
+      <div className="hidden">
+        <label>
+          No completar:
+          <input name="company" tabIndex={-1} autoComplete="off" />
+        </label>
+      </div>
+
       <div className="grid gap-4">
         <label className="grid gap-2">
           <span className="text-sm text-white/70">Nombre</span>
