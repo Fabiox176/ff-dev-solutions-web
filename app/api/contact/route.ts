@@ -33,7 +33,7 @@ export async function POST(req: Request) {
     }
 
     return Response.json({ ok: true, id: data?.id });
-  } catch (e) {
+  } catch {
     return Response.json({ ok: false, error: "Error procesando el envío" }, { status: 500 });
   }
 }
