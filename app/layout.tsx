@@ -26,7 +26,7 @@ export default function RootLayout({
               <a className="hover:text-white" href="#servicios">Servicios</a>
               <a className="hover:text-white" href="#proyectos">Proyectos</a>
               <a className="hover:text-white" href="#proceso">Proceso</a>
-              <a className="hover:text-white" href="#contacto">Contacto</a>
+              <a className="hover:text-white" href="/contacto">Contacto</a>
             </nav>
           </div>
         </header>
