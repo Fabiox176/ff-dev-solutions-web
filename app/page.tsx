@@ -59,6 +59,59 @@ export default function Home() {
         </div>
       </section>
 
+            {/* PROYECTOS */}
+      <section id="proyectos">
+        <div className="mx-auto max-w-6xl px-6 py-14">
+          <h2 className="text-2xl font-bold">Proyectos</h2>
+          <p className="mt-2 text-white/70">
+            Trabajo real o demos bien hechas. Lo importante: se puede ver.
+          </p>
+
+          <div className="mt-8 grid gap-4 lg:grid-cols-2">
+            {[
+              {
+                title: "Landing profesional (este sitio)",
+                desc: "Base sólida: Next.js + Tailwind, responsive, deploy continuo en Vercel.",
+                tags: ["Next.js", "Tailwind", "Vercel"],
+                href: "https://ff-dev-solutions-web.vercel.app/",
+              },
+              {
+                title: "Automatización / Scripts",
+                desc: "Procesos repetitivos fuera: tareas, reportes, integraciones simples.",
+                tags: ["Node", "Python", "APIs"],
+                href: "#contacto",
+              },
+            ].map((p) => (
+              <a
+                key={p.title}
+                href={p.href}
+                className="group rounded-xl border border-white/10 p-5 transition hover:border-white/30"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <h3 className="font-semibold group-hover:text-white">{p.title}</h3>
+                    <p className="mt-2 text-sm text-white/70">{p.desc}</p>
+                  </div>
+                  <span className="text-white/40 group-hover:text-white/70">↗</span>
+                </div>
+
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {p.tags.map((t) => (
+                    <span
+                      key={t}
+                      className="rounded-full border border-white/10 px-3 py-1 text-xs text-white/70"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
       {/* PROCESO */}
       <section id="proceso" className="bg-white/5">
         <div className="mx-auto max-w-6xl px-6 py-14">

@@ -24,6 +24,7 @@ export default function RootLayout({
             <span className="font-semibold">F&F Dev Solutions</span>
             <nav className="flex gap-6 text-sm text-white/70">
               <a className="hover:text-white" href="#servicios">Servicios</a>
+              <a className="hover:text-white" href="#proyectos">Proyectos</a>
               <a className="hover:text-white" href="#proceso">Proceso</a>
               <a className="hover:text-white" href="#contacto">Contacto</a>
             </nav>
