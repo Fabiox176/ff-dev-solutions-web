@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Inter } from "next/font/google";
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+});
+
 
 export const metadata: Metadata = {
   title: "F&F Dev Solutions",
@@ -11,7 +18,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="es">
-      <body className="min-h-screen bg-black text-white">
+      <body className={`${inter.className} min-h-screen bg-black text-white`}>
         <header className="border-b border-white/10">
           <div className="mx-auto flex max-w-6xl items-center justify-between p-6">
             <span className="font-semibold">F&F Dev Solutions</span>
